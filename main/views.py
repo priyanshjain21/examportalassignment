@@ -38,7 +38,6 @@ class LoginUser(APIView):
     """To login user using email and password"""
 
     def post(self, request, *args, **kwargs):
-        import pdb;pdb.set_trace()
         #validation for password is required
         if not request.data.get("password"):
             return Response(responsedata(False, "Password is required"), status=status.HTTP_400_BAD_REQUEST)
@@ -84,7 +83,7 @@ class AddQuestion(APIView):
 class DeleteQuestion(APIView):
 
      def delete(self, request, pk, format=None):
-        import pdb; pdb.set_trace()
+        
         try:
             if StudentChoice.objects.filter(choice__question=pk,choice__is_correct=True).exists():
                 studentchoice_objects = StudentChoice.objects.filter(choice__question=pk,choice__is_correct=True)
@@ -160,7 +159,6 @@ class DeleteChoice(APIView):
 
 class StudentChoiceSelection(APIView):
     def post(self, request):
-        import pdb;pdb.set_trace()
         
         choice_object = Choice.objects.get(uuid=request.data['choice'])
 
